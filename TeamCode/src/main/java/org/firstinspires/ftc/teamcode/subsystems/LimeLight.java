@@ -22,8 +22,7 @@ public class LimeLight extends SubsystemBase {
     public void init() {
         teamColor = BarnRobot.getInstance().teamColor;
         limelight = BarnRobot.getInstance().hardwareMap.get(Limelight3A.class, "limelight");
-        limelight.pipelineSwitch(5);
-        //        limelight.pipelineSwitch(PIPELINE);
+        limelight.pipelineSwitch(PIPELINE);
         // Temp random comment
     }
 
