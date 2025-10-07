@@ -19,6 +19,13 @@ public class LimeLight extends SubsystemBase {
     private GlobalData.Alliance teamColor;
 
 
+    public void init() {
+        teamColor = BarnRobot.getInstance().teamColor;
+        limelight = BarnRobot.getInstance().hardwareMap.get(Limelight3A.class, "limelight");
+        limelight.pipelineSwitch(PIPELINE);
+        // Temp random comment
+    }
+
     public LimeLight(){
         init();
         Dx = 0;
@@ -27,11 +34,6 @@ public class LimeLight extends SubsystemBase {
         limelight.pipelineSwitch(PIPELINE);
     }
 
-    public void init() {
-        teamColor = BarnRobot.getInstance().teamColor;
-        limelight = BarnRobot.getInstance().hardwareMap.get(Limelight3A.class, "limelight");
-        limelight.pipelineSwitch(PIPELINE);
-    }
 
     // This function is required to execute right when the OpMode starts (after init)
     public void start(){
