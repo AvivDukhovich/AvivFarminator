@@ -7,8 +7,8 @@ import com.seattlesolvers.solverslib.command.Robot;
 import com.seattlesolvers.solverslib.gamepad.GamepadEx;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.SubSystems.ArmSubSystem;
-import org.firstinspires.ftc.teamcode.SubSystems.ClawSubSystem;
+import org.firstinspires.ftc.teamcode.subsystems.ArmSubSystem;
+import org.firstinspires.ftc.teamcode.subsystems.ClawSubSystem;
 
 public class BarnRobot extends Robot {
     public static BarnRobot instance;
