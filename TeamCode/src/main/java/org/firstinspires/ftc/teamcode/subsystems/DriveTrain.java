@@ -18,12 +18,6 @@ public class DriveTrain extends SubsystemBase {
     public IMU imu;
     private double headingOffset;
 
-    private final PIDController pidControllerYaw;
-    public static double pYaw = 0.05, dYaw = 0; // ToDo: tune PID
-
-    private final double TARGET_RANGE = 0.1;
-
-
     // -------------------- Mecanum Drive --------------------
     public final MecanumDriveComponent mecanumDriveComponent;
 
@@ -62,8 +56,6 @@ public class DriveTrain extends SubsystemBase {
 
         // Set heading offset
         this.headingOffset = headingOffset;
-
-        pidControllerYaw = new PIDController(pYaw, 0, dYaw);
     }
 
 
@@ -84,11 +76,6 @@ public class DriveTrain extends SubsystemBase {
         mecanumDriveComponent.driveFieldCentric(x, y, turn, getHeadingRadians());
     }
 
-    public void alignToGoal(double yawDiff) {
-        double spdT = diffToSpeed(yawDiff);
-        drive(0, 0, spdT);
-    }
-
 
     // -------------------- Commands --------------------
     public Command driveCommand() {
@@ -102,17 +89,4 @@ public class DriveTrain extends SubsystemBase {
         );
     }
 
-    private double diffToSpeed(double yawDiff) {
-        double target = yawDiff > 0 ? TARGET_RANGE : -TARGET_RANGE;
-        return pidControllerYaw.calculate(yawDiff, target);
-    }
-
-    public Command alignToTag() {
-        return new RunCommand(
-                () -> alignToGoal(
-                        BarnRobot.getInstance().limelight.getDyaw()
-                ),
-                this
-        );
-    }
 }

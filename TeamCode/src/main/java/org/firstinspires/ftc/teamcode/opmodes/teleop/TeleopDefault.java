@@ -15,8 +15,6 @@ public class TeleopDefault extends CommandOpMode {
 
     private BarnRobot farminator;
 
-    private static final double SLOW_MODE_TRIGGER_THRESHOLD = 0.05;
-
     private GlobalData.Alliance teamColor = GlobalData.Alliance.BLUE;
 
 
@@ -44,20 +42,12 @@ public class TeleopDefault extends CommandOpMode {
         gamepadEx1.getGamepadButton(GamepadKeys.Button.X)
                 .whenPressed(() -> farminator.drive.resetHeading());
 
-        // Y for transfer
-         farminator.gamepadEx1.getGamepadButton(GamepadKeys.Button.Y)
-                 .whenPressed(farminator.transfer.transferCommand());
-
-         farminator.gamepadEx1.getGamepadButton(GamepadKeys.Button.RIGHT_BUMPER)
-                 .toggleWhenPressed(farminator.drive.alignToTag());
-
 
     }
 
     @Override
     public void run() {
         super.run();
-        farminator.limelight.displayTelemetry();
         telemetry.update();
     }
 }
